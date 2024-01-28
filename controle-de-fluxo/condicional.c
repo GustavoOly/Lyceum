@@ -16,7 +16,7 @@ int main(int argc, char const *argv[])
     	printf("Opção 1\n");
     } else {
         printf("nenhuma das opções\n");
-    }
+    }e
 
     // tomada de decisão sequencial simples
     if(num != num2){
@@ -58,6 +58,6 @@ int main(int argc, char const *argv[])
     default:
         printf("nenhuma das alternativas\n"); 
     }
-    
+
 	return 0;
 }
