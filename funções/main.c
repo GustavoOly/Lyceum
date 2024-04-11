@@ -14,6 +14,7 @@ typedef struct {
   int idade;
 } Pessoa;
 
+
 struct Carro {
   char marca[50];
   char modelo[50];
@@ -25,11 +26,11 @@ typedef struct {
   char modelo[50];
 } Roupas;
 
-
 typedef struct {
   char cabelo[50];
   char cor[50];
 } Caracteristicas;
+
 
 bool buscarCaracteres(char palavra[]) {
   for (int i = 0; i < sizeof(*palavra); i++) {
@@ -60,7 +61,7 @@ void imprimirCaracteristicas() {
 int main() {
   buscarCaracteres("abacatw");
   palavraEncontrada();
-
+  
   int array[] = {1, 2, 3, 4, 5};
   array[1] = 10;
   printf("%d\n", array[1]);

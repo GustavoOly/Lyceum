@@ -1,7 +1,7 @@
 
 /*
 char //caracter
-int  //inteiro
+5int  //inteiro
 floaf  //real de precisão simples
 double // real de precisão dupla
 void  // vazio (sem valor)
@@ -28,6 +28,8 @@ void real() {
   printf("Valor de n1 = %.1f", n1);
 }
 
+
+
 int main(void) // função principal
 {              // inicio
   int n1;
@@ -36,4 +38,4 @@ int main(void) // função principal
   real();
   return 0; // valor de retorno da função main - zero signfica que executou com
             // sucesso.
-} // fim do programa
+} // fim do program
