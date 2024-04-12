@@ -29,7 +29,6 @@ void real() {
 }
 
 
-
 int main(void) // função principal
 {              // inicio
   int n1;

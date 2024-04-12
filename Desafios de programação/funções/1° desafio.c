@@ -15,6 +15,7 @@ true
 #include <stdbool.h>
 #include <stdio.h>
 
+
 char valor_bool(bool valor) {
   if (valor == true) {
     return printf("true\n");
@@ -28,9 +29,6 @@ bool encontre_primo(int valor) {
   }
   return true;
 }
-
-
-
 
 int main() {
   valor_bool(encontre_primo(7));
