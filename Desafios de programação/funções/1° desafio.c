@@ -15,22 +15,21 @@ true
 #include <stdbool.h>
 #include <stdio.h>
 
-
 char valor_bool(bool valor) {
-  if (valor == true) {
-    return printf("true\n");
-  }
-  return printf("false\n");
+    if (valor == true) {
+        return printf("true\n");
+    }
+    return printf("false\n");
 }
 
 bool encontre_primo(int valor) {
-  if (valor % 2 == 0) {
-    return false;
-  }
-  return true;
+    if (valor % 2 == 0) {
+        return false;
+    }
+    return true;
 }
 
 int main() {
-  valor_bool(encontre_primo(7));
-  return 0;
+    valor_bool(encontre_primo(7));
+    return 0;
 }

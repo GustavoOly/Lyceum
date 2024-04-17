@@ -1,4 +1,3 @@
-
 /*
 char //caracter
 5int  //inteiro
@@ -23,18 +22,17 @@ short //curto
 #include <stdio.h>   //biblioteca para entrada e saída de dados
 
 void real() {
-  float n1;
-  n1 = 1.1;
-  printf("Valor de n1 = %.1f", n1);
+    float n1;
+    n1 = 1.1;
+    printf("Valor de n1 = %.1f", n1);
 }
-
 
 int main(void) // função principal
 {              // inicio
-  int n1;
-  n1 = 10;
-  printf("Valor de n1 = %d", n1);
-  real();
-  return 0; // valor de retorno da função main - zero signfica que executou com
-            // sucesso.
+    int n1;
+    n1 = 10;
+    printf("Valor de n1 = %d", n1);
+    real();
+    return 0; // valor de retorno da função main - zero signfica que executou
+              // com sucesso.
 } // fim do program
