@@ -1,5 +1,5 @@
 #include <stdio.h>
-
+  
 // constate global
 const int global = 14;
 

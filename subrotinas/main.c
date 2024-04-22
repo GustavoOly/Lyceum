@@ -1,6 +1,7 @@
 #include <stdbool.h>
 #include <stdio.h>
 #include <string.h>
+#include <sys/_intsup.h>
 
 int somar(int num, int num2);
 
@@ -59,7 +60,7 @@ void imprimirCaracteristicas() {
 }
 
 int main() {
-    buscarCaracteres("abacatw");
+    buscarCaracteres("abacate");
     palavraEncontrada();
 
     int array[] = {1, 2, 3, 4, 5};

@@ -1,10 +1,10 @@
-CC = gcc
+CC = clang
 CFLAGS = -Wall -Wextra -std=c99
-GTKLIBS = $(shell pkg-config --libs gtk4)
+GTKLIBS = $(pkg-config --cflags gtk4) $(shell pkg-config --libs gtk)
 TARGET = hello-world-gtk
 
 $(TARGET): $(TARGET).c
-	$(CC) $(CFLAGS) -o $(TARGET) $(TARGET).c $(GTKLIBS)
+	$(CC) -o $(TARGET) $(TARGET).c $(GTKLIBS)
 
 run: $(TARGET)
 	./$(TARGET)
