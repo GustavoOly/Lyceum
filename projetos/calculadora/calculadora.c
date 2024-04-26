@@ -1,4 +1,3 @@
-#include <stdbool.h>
 #include <stdio.h>
 
 int somar(int num1, int num2) { return num1 + num2; }
@@ -17,13 +16,11 @@ int main() {
         scanf("%i", &num1);
         printf("Digite mais um numero: ");
         scanf("%i", &num2);
-
         printf("Agora escolha uma operação\n");
         printf("1 - Somar\n");
         printf("2-  subtrair\n");
         printf("3 - Multiplicar\n");
         printf("4 - Dividir\n");
-
         scanf("%i", &escolha);
 
         switch (escolha) {
