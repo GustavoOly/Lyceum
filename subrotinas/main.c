@@ -1,7 +1,6 @@
 #include <stdbool.h>
 #include <stdio.h>
 #include <string.h>
-#include <sys/_intsup.h>
 
 int somar(int num, int num2);
 
@@ -33,8 +32,8 @@ typedef struct {
     char cor[50];
 } Caracteristicas;
 
-bool buscarCaracteres(char palavra[]) {
-    for (int i = 0; i < sizeof(*palavra); i++) {
+bool buscarCaracteres(const char *palavra) {
+    for (int i = 0; i < strlen(palavra); i++) {
         if (palavra[i] == 'a') {
             return true;
         }
@@ -42,15 +41,13 @@ bool buscarCaracteres(char palavra[]) {
     return false;
 }
 
-char palavraEncontrada() {
-    if (*buscarCaracteres != false) {
-        printf("Palavra não encontrada\n");
-    } else {
+void palavraEncontrada(const char *palavra) {
+    if (buscarCaracteres(palavra)) {
         printf("Palavra encontrada\n");
+    } else {
+        printf("Palavra não encontrada\n");
     }
-    return '\0';
 }
-
 void imprimirCaracteristicas() {
     Caracteristicas individuo;
     strcpy(individuo.cabelo, "castanho");
@@ -60,8 +57,7 @@ void imprimirCaracteristicas() {
 }
 
 int main() {
-    buscarCaracteres("abacate");
-    palavraEncontrada();
+    palavraEncontrada("green");
 
     int array[] = {1, 2, 3, 4, 5};
     array[1] = 10;

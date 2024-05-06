@@ -18,4 +18,6 @@ int main() {
     printf("Tamnho inteiro: %i\n", tamanho_inteiro);
 
     return 0;
+
+    
 }
