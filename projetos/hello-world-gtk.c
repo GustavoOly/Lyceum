@@ -15,7 +15,7 @@ static void activate (GtkApplication *app, gpointer user_data) {
     button = gtk_button_new_with_label ("Hello, World!");
     g_signal_connect (button, "clicked", G_CALLBACK (print_hello), NULL);
     gtk_window_set_child (GTK_WINDOW (window), button);
-
+2
     gtk_widget_show(window);
 }
 
