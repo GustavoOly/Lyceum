@@ -1,23 +1,25 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int main( ){
-    int * valor;
+int main() {
+    int *valor;
 
-    valor = malloc(sizeof(int));
+    valor = (int *)malloc(sizeof(int));
+    printf("%p\n", (void *)valor);
+    puts("Digite um numero: ");
+    scanf("%d", valor);
+    printf("%d\n", *valor);
 
-    printf("Digite um numero: ");
-    scanf("%i", valor);
-    printf("%i\n", *valor);
-
-    printf("Digite um numero: ");
-    scanf("%i", valor);
-    printf("%i\n", *valor);
-
-    printf("Digite um numero: ");
-    scanf("%i", valor);
-    printf("%i\n", *valor);a
+    int *new = (int *)realloc(valor, sizeof(int));
+    printf("%p\n", (void *)new);
+    if (new == NULL) {
+        puts("memoria insufuciente para realocação");
+        free(valor);
+        return 1;
+    }
 
     free(valor);
+    valor = NULL;
+
     return 0;
 }
