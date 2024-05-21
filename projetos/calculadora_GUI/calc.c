@@ -8,7 +8,7 @@
 int main() {
     if (!glfwInit()) {
         puts("Erro ao iniciar a janela");
-    };
+    }
 
     GLFWwindow *window = glfwCreateWindow(WINDOW_WIDTH, WINDOW_HEIGHT,
                                           "calculadora", NULL, NULL);
@@ -20,7 +20,6 @@ int main() {
     }
 
     glfwMakeContextCurrent(window);
-
     glfwSwapInterval(1);
 
     while (!glfwWindowShouldClose(window)) {
