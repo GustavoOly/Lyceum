@@ -1,27 +1,23 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-void demonstrar_vetor() {
-    puts("vetor");
-    int vetor[10];
-    vetor[0] = 1;
-    printf("%i\n", vetor[0]);
-}
-void demonstrar_vetor_dinamico() {
-    puts("Vetor dinamico");
-    int *vetor = malloc(sizeof(int));
-    vetor[0] = 2;
-    vetor[1] = 3;
-    vetor[2] = 4;
-    printf("%d\n", vetor[0]);
-    printf("%d\n", vetor[1]);
-    printf("%d\n", vetor[2]);
-    free(vetor);
-    vetor = NULL;
-}
-
 int main() {
-    demonstrar_vetor();
-    demonstrar_vetor_dinamico();
+    int n;
+    puts("digite o tamanho do array: ");
+    scanf("%i", &n);
+
+    int *array = (int *)malloc(n * (sizeof(int)));
+
+    for (int i = 0; i < n; i++) {
+        array[i] = i * 2;
+    }
+
+    puts("exibir valores");
+    for (int i = 0; i < n; i++) {
+        printf("%i\n", array[i]);
+    }
+
+    free(array);
+
     return 0;
 }

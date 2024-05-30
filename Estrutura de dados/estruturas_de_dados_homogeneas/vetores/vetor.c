@@ -16,6 +16,5 @@ int main() {
     for (int i = 0; i < tamanho2; ++i) {
         printf("%i\n", vetor2[i]);
     }
-
     return 0;
 }
