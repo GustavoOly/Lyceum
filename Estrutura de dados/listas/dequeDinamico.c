@@ -12,7 +12,6 @@
    final).
 */
 
-#include <stdbool.h>
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -78,9 +77,70 @@ void deleteFront(Deque *dq) {
         puts("Deque vazio");
         return;
     }
+
+    Node * temp =dq->front;
+    dq->front = dq->front->next;
+
+    if(dq->front == NULL){
+        dq->rear = NULL;
+    } else {
+        dq->front->prev= NULL;
+    }
+
+    free(temp);
+}
+
+void deleteRear(Deque * dq) {
+    if (isEmpty(dq)){
+        puts("Deque vazio");
+        return;
+    }
+
+    Node* temp = dq->rear;
+    dq->rear = dq->rear->prev;
+    if(dq->rear == NULL){
+        dq->front = NULL;
+
+    } else {
+        dq->rear->next = NULL;
+    }
+    free(temp);
+}
+
+int getFront(Deque * dq){
+    if(isEmpty(dq)){
+        puts("Deque vazio");
+        return -1;
+    }
+
+    return dq->front->data;
+}
+
+int getRear(Deque *dq){
+    if(isEmpty(dq)){
+        puts("Deque vazio");
+        return -1;
+    }
+    return dq->rear->data;
 }
 
 int main() {
-    puts("test");
+    Deque dq;
+    initDeque(&dq);
+
+    insertRear(&dq, 5);
+    insertRear(&dq, 10);
+    insertFront(&dq, 15);
+    insertFront(&dq,20);
+
+    printf("Elemento na frente: %d\n", getFront(&dq));
+    printf("Elemento no final: %d\n", getRear(&dq));
+
+    deleteFront(&dq);
+    printf("Elemento na frente apos a remocao: %d\n", getFront(&dq));
+
+    deleteRear(&dq);
+    printf("Elemento no final apos a remocao: %d\n", getRear(&dq));
+
     return 0;
 }
