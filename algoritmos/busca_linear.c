@@ -1,31 +1,24 @@
 #include <stdio.h>
 
-// Não é o melhor algoritmo para listas ordenadas
-// Melhor caso de uso: quando o elemento buscado é o primeiro
-// Pior caso de uso: quando o elemento buscado é o ultimo
+int main() {
+    int low, high, numero_buscado, meio;
 
-int busca_linar(int array[], int tamanho_array, int buscar_numero) {
-    for (int i = 0; i < tamanho_array; i++) {
-        printf("%i\n", array[i]);
-        if (array[i] == buscar_numero) {
-            printf("O numero %i existe na lista \n", array[i]);
-            return i;
+    int array[] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+    low = 0;
+    high = sizeof(array) / sizeof(0);
+    numero_buscado = 7;
+
+    while (low <= high) {
+        meio = (low + high) / 2;
+        puts("quantidade");
+        if (numero_buscado == meio) {
+            printf("Numero encontrado na posição:  %i\n", meio);
+            break;
+        } else if (array[meio] > numero_buscado) {
+            high = meio - 1;
+        } else {
+            low = meio + 1;
         }
     }
-    puts("Numero não encontrado");
-    return -1;
-}
-
-int main() {
-    int array[10];
-    int tamanho_array = 10;
-    int buscar_numero;
-    puts("Digite uma sequência de numeros: ");
-    for (int i = 0; i < tamanho_array; i++) {
-        printf("Digite o numero %i: ", i);
-        scanf("%i", &array[i]);
-    }
-    puts("Digite o numero que deseja buscar: ");
-    scanf("%i", &buscar_numero);
-    busca_linar(array, tamanho_array, buscar_numero);
+    return 0;
 }
