@@ -1,3 +1,7 @@
+/*
+    Sempre inserir no topo e remover do topo
+*/
+
 #include <stdio.h>
 #include <stdlib.h>
 
