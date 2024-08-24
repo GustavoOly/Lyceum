@@ -1,24 +1,30 @@
 #include <stdio.h>
 
-int main() {
-    int low, high, numero_buscado, meio;
-
-    int array[] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
-    low = 0;
-    high = sizeof(array) / sizeof(0);
-    numero_buscado = 7;
-
-    while (low <= high) {
-        meio = (low + high) / 2;
-        puts("quantidade");
-        if (numero_buscado == meio) {
-            printf("Numero encontrado na posição:  %i\n", meio);
-            break;
-        } else if (array[meio] > numero_buscado) {
-            high = meio - 1;
+int busca_binaria(int lista[], int numero_buscado, int tamanho) {
+    int low = 0;
+    int high = tamanho - 1;
+    int repeticaoes = 1;
+    while (low < high) {
+        int medium = (low + high) / 2;
+        printf("%d\n", lista[medium]);
+        printf("vezes %d\n", repeticaoes);
+        repeticaoes++;
+        if (medium == numero_buscado) {
+            printf("Numero encontrado na posição %d", medium);
+            return 0;
+        } else if (lista[medium] < numero_buscado) {
+            high = medium - 1;
         } else {
-            low = meio + 1;
+            low = medium + 1;
         }
     }
+    return -1;
+}
+
+int main() {
+    int lista[] = {1, 2, 3, 4, 5, 6, 7, 8};
+    int tamanho = sizeof(lista) / sizeof(lista[0]);
+    int numero_buscado = 7;
+    busca_binaria(lista, numero_buscado, tamanho);
     return 0;
 }
