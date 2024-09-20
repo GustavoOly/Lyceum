@@ -2,27 +2,21 @@
 #include <stdio.h>
 
 int bubble_sort(int *lista, int tamanho) {
-    for (int i = 0; i < tamanho - 1; i++) {
-        printf("i %d\n", lista[i]);
-        int trocou = false;
-        for (int j = 0; j < tamanho - 1 - i; j++) {
-            if (lista[j] > lista[j + 1]) {
-                int temp = lista[j];
-                printf("temp %d\n", temp);
-                lista[j] = lista[j + 1];
-                printf("lista[j] %d\n", lista[j]);
-                lista[j + 1] = temp;
-                printf("lista[j + 1] %d\n", lista[j + 1]);
-                trocou = true;
+    int troca;
+    int iteracoes = 1;
+    do {
+        troca = false;
+        for (int i = 0; i < tamanho - 1; ++i) {
+            if (lista[i] > lista[i + 1]) {
+                int aux = lista[i];
+                lista[i] = lista[i + 1];
+                lista[i + 1] = aux;
+                troca = true;
             }
         }
-        printf("Valor de trocou: %s\n", trocou ? "true" : "false");
-        if (!trocou) {
-            puts("A lista já está ordenada");
-            break;
-        }
-    }
-    return -1;
+        printf("repetições: %d\n", iteracoes++);
+    } while (troca);
+    return 0;
 }
 
 int exibir_lista(int *lista, int tamanho) {
@@ -33,7 +27,7 @@ int exibir_lista(int *lista, int tamanho) {
 }
 
 int main() {
-    int lista[] = {5, 2, 7, 1};
+    int lista[] = {5, 2, 98, 32, 15};
     int tamanho = sizeof(lista) / sizeof(lista[0]);
     bubble_sort(lista, tamanho);
     puts("-------- Lista ordenada -----------");
