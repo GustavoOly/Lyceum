@@ -4,52 +4,54 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-#include <string.h>
 
-typedef struct No {
-    int id;
-    char Nome[20];
-    struct No *proximo;
-} No;
+typedef struct Registro {
+    int chave;
+    struct Registro *prox;
+} Registro;
 
-void remover_primeiro_no(No **primeiro) {
-    No *atual = *primeiro;
-    if (atual == NULL) {
-        return;
-    } else {
-        *primeiro = atual->proximo;
+Registro *insert_on_top(Registro *list, int chave) {
+    Registro *new_node = (Registro *)malloc(sizeof(Registro));
+    new_node->chave = chave;
+    new_node->prox = list;
+    return new_node;
+};
+
+Registro *remove_at_start(Registro *list) {
+    Registro *current = list;
+    Registro *prev = NULL;
+    while (current->prox != NULL) {
+        prev = current;
+        current = current->prox;
     }
-    free(atual);
+    free(current);
+    if (prev != NULL) {
+        prev->prox = NULL;
+    }
+    return list;
 }
 
-void exibir_nos(No *no) {
-    while (no != NULL) {
-        printf("id: %i\nNome: %s\n", no->id, no->Nome);
-        puts("------------------");
-        no = no->proximo;
+void show_list(Registro *list) {
+    Registro *current = list;
+    while (current != NULL) {
+        printf("chave: %d\n", current->chave);
+        current = current->prox;
     }
 }
 
 int main() {
-    No *primeiro = (No *)malloc(sizeof(No));
-    No *segundo = (No *)malloc(sizeof(No));
-    primeiro->id = 1;
-    strcpy(primeiro->Nome, "Oly");
-    primeiro->proximo = segundo;
-
-    segundo->id = 2;
-    strcpy(segundo->Nome, "Alice");
-    segundo->proximo = NULL;
-
-    puts("Empilhando os Nós na lista:");
-    puts("------------------");
-    exibir_nos(primeiro);
-
-    puts("Removendo o primeiro Nó da lista:");
-    puts("------------------");
-
-    remover_primeiro_no(&primeiro);
-
-    exibir_nos(primeiro);
+    Registro *list = NULL;
+    puts("============\n"
+         "Enfilerando"
+         "\n============");
+    list = insert_on_top(list, 1);
+    list = insert_on_top(list, 2);
+    list = insert_on_top(list, 3);
+    show_list(list);
+    puts("============\n"
+         "Desenfilerando"
+         "\n============");
+    list = remove_at_start(list);
+    show_list(list);
     return 0;
 }
