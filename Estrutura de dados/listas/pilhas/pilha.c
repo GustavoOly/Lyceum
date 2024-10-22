@@ -5,72 +5,46 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-typedef struct {
-    int dia, mes, ano;
-} Data;
+typedef struct Registro {
+    int chave;
+    struct Registro *prox;
+} Registro;
 
-typedef struct {
-    char nome[50];
-    Data data;
-} Pessoa;
+Registro *insert_on_top(Registro *list, int chave) {
+    Registro *new_node = (Registro *)malloc(sizeof(Registro));
+    new_node->chave = chave;
+    new_node->prox = list;
+    return new_node;
+};
 
-typedef struct no {
-    Pessoa p;
-    struct no *proximo;
-} No;
-
-Pessoa ler_pessoa() {
-    Pessoa p;
-    puts("Digite o nome, data de nascimento, dd mm aaaa:");
-    scanf("%49[^\n]%d%d%d", p.nome, &p.data.dia, &p.data.mes, &p.data.ano);
-    return p;
+Registro *remove_on_top(Registro *list) {
+    Registro *current_top = list;
+    list = list->prox;
+    free(current_top);
+    return list;
 }
 
-void imprimir_pessoa(Pessoa p) {
-    printf("\n Nome: %s\n Data: %2d/%2d/%4d\n", p.nome, p.data.dia, p.data.mes,
-           p.data.ano);
-}
-
-No *empilhar(No *topo) {
-    No *novo = malloc(sizeof(No));
-    if (novo) {
-        novo->p = ler_pessoa();
-        novo->proximo = topo;
-        return novo;
-    } else {
-        printf("\n Erro na alocação \n");
+void show_list(Registro *list) {
+    Registro *current = list;
+    while (current != NULL) {
+        printf("chave: %d\n", current->chave);
+        current = current->prox;
     }
-    return NULL;
 }
 
 int main() {
-
-    No *topo = NULL;
-    int opcao;
-
-    do {
-        printf(
-            "\n 0 - sair , n1 = empilhar, n2 = desempilhar, n3 = imprimir\n");
-        scanf("%d", &opcao);
-        getchar();
-        printf("\n opcao = %d", opcao);
-
-        switch (opcao) {
-        case 1:
-            topo = empilhar(topo);
-            break;
-        case 2:
-        	
-            break;
-        case 3:
-
-            break;
-        default:
-            if (opcao != 0) {
-                printf("\n opcao invalida\n");
-            }
-        }
-    } while (opcao != 0);
-
+    Registro *list = NULL;
+    puts("============\n"
+         "Empilhando"
+         "\n============");
+    list = insert_on_top(list, 1);
+    list = insert_on_top(list, 2);
+    list = insert_on_top(list, 3);
+    show_list(list);
+    puts("============\n"
+         "Desempilhando"
+         "\n============");
+    list = remove_on_top(list);
+    show_list(list);
     return 0;
 }
