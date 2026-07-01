@@ -8,7 +8,9 @@ static inline int subtracao(int a, int b) { return a - b; }
 static inline int multiplicacao(int a, int b) { return a * b; }
 
 /**
- * Expõe o quociente do dividendo (a) pelo divisor (b)
+ * @brief Expõe o quociente e o resto do dividendo (a) pelo divisor (b)
+ * @param a dividendo
+ * @param b divisor
  */
 static inline int divisao(int a, int b) {
     if (a == 0) {
@@ -16,12 +18,15 @@ static inline int divisao(int a, int b) {
         return 0;
     }
     int aux = a / b;
-    printf("Divisão de %d / %d: %d\n", a, b, aux);
+    int res = a % b;
+    printf("Divisão de %d / %d: %d com resto %d\n", a, b, aux, res);
     return 0;
 }
 
 /**
- * Expõe a converção do decimal (a) para a base (b)
+ * @brief Expõe a converção de um decimal para uma base n
+ * @param a número decimal
+ * @param b base
  */
 static inline int conversaoDeBase(int a, int b) {
     switch (b) {
@@ -80,7 +85,6 @@ static inline int conversaoDeBase(int a, int b) {
             int res = aux % b;
             aux = quo;
             exp[i] = res;
-            printf("%d", exp[i]);
             i++;
         }
         puts("");
@@ -93,6 +97,7 @@ static inline int conversaoDeBase(int a, int b) {
         }
 
         // resultado
+        printf("%d na base %d: ", a, b);
         for (int j = 0; j < i; ++j) {
             printf("%d", exp[j]);
         }
@@ -106,7 +111,8 @@ static inline int conversaoDeBase(int a, int b) {
 }
 
 /**
- * Expõe se (a) é primo ou composto
+ * @brief Expõe se (a) é primo ou composto
+ * @param a número natural
  */
 static inline int primo(int a) {
     int raiz = 0;
