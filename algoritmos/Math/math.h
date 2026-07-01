@@ -5,6 +5,10 @@
 static inline int soma(int a, int b) { return a + b; }
 static inline int subtracao(int a, int b) { return a - b; }
 static inline int multiplicacao(int a, int b) { return a * b; }
+
+/**
+ * Expõe o quociente do dividendo (a) pelo divisor (b)
+ */
 static inline int divisao(int a, int b) {
     if (a == 0) {
         printf("O dividendo não pode ser 0\n");
@@ -15,6 +19,49 @@ static inline int divisao(int a, int b) {
     return 0;
 }
 
+/**
+ * Expõe a converção do decimal (a) para a base (b)
+ */
+static inline int conversaoDeBase(int a, int b) {
+    switch (b) {
+    case 2: {
+        int exp[2 * 9 - 1] = {};
+        int aux = a;
+        int i = 0;
+
+        // divisão
+        while (aux >= 1) {
+            int qo = aux / b;
+            int resto = aux % 2;
+            aux = qo;
+            exp[i] = resto;
+            i++;
+        }
+
+        // inverção
+        for (int j = 0; j < i / 2; j++) {
+            int aux = exp[j];
+            exp[j] = exp[(i - 1) - j];
+            exp[(i - 1) - j] = aux;
+        }
+
+        // resultado
+        printf("%d na base %d: ", a, b);
+        for (int j = 0; j < i; ++j) {
+            printf("%d", exp[j]);
+        }
+        break;
+    }
+    default:
+        printf("Base invalida. Tente por 2");
+        break;
+    }
+    return 0;
+}
+
+/**
+ * Expõe se (a) é primo ou composto
+ */
 static inline int primo(int a) {
     int raiz = 0;
     int divisores = 0;
