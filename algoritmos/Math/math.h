@@ -122,21 +122,6 @@ static inline int conversaoDeBase(int a, int b) {
             int res = aux % b;
             aux = quo;
             exp[i] = res;
-
-            if (res == 10) {
-                res = 65;
-            } else if (res == 11) {
-                res = 66;
-            } else if (res == 12) {
-                res = 67;
-            } else if (res == 13) {
-                res = 68;
-            } else if (res == 14) {
-                res = 69;
-            } else if (res == 15) {
-                res = 70;
-            }
-
             i++;
         }
         puts("");
@@ -151,11 +136,7 @@ static inline int conversaoDeBase(int a, int b) {
         // resultado
         printf("%d na base %d: ", a, b);
         for (int j = 0; j < i; ++j) {
-            if (exp[j] > 9) {
-                printf("%X", exp[j]);
-            } else {
-                printf("%d", exp[j]);
-            }
+            printf("%X", exp[j]);
         }
         break;
     }
