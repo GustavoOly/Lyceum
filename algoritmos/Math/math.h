@@ -26,7 +26,7 @@ static inline int divisao(int a, int b) {
 /**
  * @brief Expõe a converção de um decimal para uma base n
  * @param a número decimal
- * @param b base
+ * @param b base: 2,3 ou 16
  */
 static inline int conversaoDeBase(int a, int b) {
     switch (b) {
@@ -103,8 +103,64 @@ static inline int conversaoDeBase(int a, int b) {
         }
         break;
     }
+    case 16: {
+        int temp = a;
+        int size = 0;
+        while (temp >= 1) {
+            size++;
+            temp /= 3;
+        }
+        int exp[size];
+        memset(exp, 0, sizeof(exp));
+
+        int aux = a;
+        int i = 0;
+
+        // Divisão
+        while (aux >= 1) {
+            int quo = aux / b;
+            int res = aux % b;
+            aux = quo;
+            exp[i] = res;
+
+            if (res == 10) {
+                res = 65;
+            } else if (res == 11) {
+                res = 66;
+            } else if (res == 12) {
+                res = 67;
+            } else if (res == 13) {
+                res = 68;
+            } else if (res == 14) {
+                res = 69;
+            } else if (res == 15) {
+                res = 70;
+            }
+
+            i++;
+        }
+        puts("");
+
+        // Inversão
+        for (int j = 0; j < i / 2; ++j) {
+            int aux = exp[j];
+            exp[j] = exp[(i - 1) - j];
+            exp[(i - 1) - j] = aux;
+        }
+
+        // resultado
+        printf("%d na base %d: ", a, b);
+        for (int j = 0; j < i; ++j) {
+            if (exp[j] > 9) {
+                printf("%X", exp[j]);
+            } else {
+                printf("%d", exp[j]);
+            }
+        }
+        break;
+    }
     default:
-        printf("Base invalida. Tente por 2, 3");
+        printf("Base invalida. Tente por 2, 3 ou 16");
         break;
     }
     return 0;
