@@ -13,8 +13,8 @@ static inline int multiplicacao(int a, int b) { return a * b; }
  * @param b divisor
  */
 static inline int divisao(int a, int b) {
-    if (a == 0) {
-        printf("O dividendo não pode ser 0\n");
+    if (b == 0) {
+        printf("O divisor não pode ser 0\n");
         return 0;
     }
     int aux = a / b;
@@ -28,10 +28,10 @@ static inline int divisao(int a, int b) {
  * @param a número decimal
  * @param b base: 2,3 ou 16
  */
-static inline int conversaoDeBase(int a, int b) {
+static inline int conversaoDeBase(long a, int b) {
     switch (b) {
     case 2: {
-        int temp = a;
+        long temp = a;
         int size = 0;
         while (temp >= 1) {
             size++;
@@ -40,13 +40,13 @@ static inline int conversaoDeBase(int a, int b) {
         int exp[size];
         memset(exp, 0, sizeof(exp));
 
-        int aux = a;
+        long aux = a;
         int i = 0;
 
         // divisão
         while (aux >= 1) {
-            int qo = aux / b;
-            int resto = aux % 2;
+            long qo = aux / b;
+            int resto = aux % b;
             aux = qo;
             exp[i] = resto;
             i++;
@@ -60,14 +60,14 @@ static inline int conversaoDeBase(int a, int b) {
         }
 
         // resultado
-        printf("%d na base %d: ", a, b);
+        printf("%ld na base %d: ", a, b);
         for (int j = 0; j < i; ++j) {
             printf("%d", exp[j]);
         }
         break;
     }
     case 3: {
-        int temp = a;
+        long temp = a;
         int size = 0;
         while (temp >= 1) {
             size++;
@@ -76,12 +76,12 @@ static inline int conversaoDeBase(int a, int b) {
         int exp[size];
         memset(exp, 0, sizeof(exp));
 
-        int aux = a;
+        long aux = a;
         int i = 0;
 
         // Divisão
         while (aux >= 1) {
-            int quo = aux / b;
+            long quo = aux / b;
             int res = aux % b;
             aux = quo;
             exp[i] = res;
@@ -97,28 +97,28 @@ static inline int conversaoDeBase(int a, int b) {
         }
 
         // resultado
-        printf("%d na base %d: ", a, b);
+        printf("%ld na base %d: ", a, b);
         for (int j = 0; j < i; ++j) {
             printf("%d", exp[j]);
         }
         break;
     }
     case 16: {
-        int temp = a;
+        long temp = a;
         int size = 0;
         while (temp >= 1) {
             size++;
-            temp /= 3;
+            temp /= 16;
         }
         int exp[size];
         memset(exp, 0, sizeof(exp));
 
-        int aux = a;
+        long aux = a;
         int i = 0;
 
         // Divisão
         while (aux >= 1) {
-            int quo = aux / b;
+            long quo = aux / b;
             int res = aux % b;
             aux = quo;
             exp[i] = res;
@@ -134,7 +134,7 @@ static inline int conversaoDeBase(int a, int b) {
         }
 
         // resultado
-        printf("%d na base %d: ", a, b);
+        printf("%ld na base %d: ", a, b);
         for (int j = 0; j < i; ++j) {
             printf("%X", exp[j]);
         }
